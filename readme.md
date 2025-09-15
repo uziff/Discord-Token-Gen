@@ -16,7 +16,7 @@
 ## ✨ Features
 
 - 🤖 **Automated account creation** using Selenium WebDriver
-- ~📧 **Temporary email integration** with YOPmail support~ removed feature
+- <code style="color : red">~📧 **Temporary email integration** with YOPmail support~</code> **removed feature**
 - 🛡️ **Advanced rate limiting detection** to prevent Discord API blocks
 - 🔄 **Automatic retry mechanism** with intelligent backoff
 - 📊 **Real-time status updates** with colored console output
@@ -60,15 +60,15 @@ tls-client
    ```
 
 2. **The tool will automatically**:
-   - Generate temporary email addresses
+   - ~Generate temporary email addresses~ Not really, only as text to register on discord.
    - Create Discord accounts using Selenium
    - Handle CAPTCHA prompts (manual solving required)
-   - Verify emails through YOPmail
+   - <code style="color : red">~Verify emails through YOPmail~</code> Removed feature
    - Extract and save Discord tokens
 
 3. **Manual steps required**:
    - Solve CAPTCHA when prompted
-   - Verify email in YOPmail tab
+   - <code style="color : red">~Verify email in YOPmail tab~</code> Removed Feature
    - Close browser when instructed
 
 4. **Check results** in output files:
@@ -89,10 +89,10 @@ tls-client
 
 ## 🧾 Example Usage Flow
 
-1. ~📧 **Generate temporary email** using YOPmail service~ Removed feature
+1. <code style="color : red">~📧 **Generate temporary email** using YOPmail service~</code> Removed feature
 2. 🤖 **Automate Discord registration** with Selenium
 3. 🧩 **Manual CAPTCHA solving** when prompted
-4. ~✉️ **Email verification** through YOPmail interface~ Removed feature
+4. <code style="color : red">~✉️ **Email verification** through YOPmail interface~</code> Removed feature
 5. 🔑 **Token extraction** via Discord API login
 6. 💾 **Save credentials** to organized output files
 
@@ -102,7 +102,7 @@ tls-client
 |-----------|-------------|---------|
 | `Selenium WebDriver` | Browser automation | Account registration |
 | `Undetected Chrome` | Stealth browser | Bypass detection |
-~| `YOPmail Integration` | Temporary emails | Email verification |~ Removed feature
+<code style="color : red">~| `YOPmail Integration` | Temporary emails | Email verification |~</code> Removed feature
 | `TLS Client` | Rate limit detection | API monitoring |
 | `Random Generation` | Fake user data | Realistic accounts |
 
@@ -119,7 +119,7 @@ tls-client
 
 - 🚦 **Rate limiting is automatically handled** to prevent blocks
 - 🧩 **Manual CAPTCHA solving required** for security
-- ~✉️ **Email verification must be done manually** in YOPmail~ Removed feature
+- <code style="color : red">~✉️ **Email verification must be done manually** in YOPmail~</code> Removed feature
 - ~🔄 **Browser restart recommended** between generations~
 - 📊 **All tokens are automatically saved** to output files
 - ⚖️ **Use responsibly** and follow Discord's Terms of Service <-- yup, do that.
