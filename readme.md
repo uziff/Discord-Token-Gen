@@ -119,7 +119,7 @@ tls-client
 - 🚦 **Rate limiting is automatically handled** to prevent blocks
 - 🧩 **Manual CAPTCHA solving required** for security
 - <code style="color : red">~✉️ **Email verification must be done manually** in YOPmail~</code> Removed feature
-- ~🔄 **Browser restart recommended** between generations~
+- <code style="color : red">~🔄 **Browser restart recommended** between generations~</code>
 - 📊 **All tokens are automatically saved** to output files
 - ⚖️ **Use responsibly** and follow Discord's Terms of Service <-- yup, do that.
 
