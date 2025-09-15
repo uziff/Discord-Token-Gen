@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <b>🔥 "Advanced" Discord Token Generator with Selenium Automation — FREE edition</b><br>
+  <b>🔥 "Advanced" Discord Token Generator with Selenium Automation</b><br>
   🎉 Made with ❤️ by <a href="https://github.com/anomusly">@AnomusLY</a> | Modified and adjusted by uzif :3</a>
 </p>
 
