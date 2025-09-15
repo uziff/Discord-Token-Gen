@@ -60,7 +60,7 @@ tls-client
    ```
 
 2. **The tool will automatically**:
-   - ~Generate temporary email addresses~ Not really, only as text to register on discord.
+   - <code style="color : red">~Generate temporary email addresses~</code> Not really, only as text to register on discord.
    - Create Discord accounts using Selenium
    - Handle CAPTCHA prompts (manual solving required)
    - <code style="color : red">~Verify emails through YOPmail~</code> Removed feature
@@ -102,7 +102,6 @@ tls-client
 |-----------|-------------|---------|
 | `Selenium WebDriver` | Browser automation | Account registration |
 | `Undetected Chrome` | Stealth browser | Bypass detection |
-<code style="color : red">~| `YOPmail Integration` | Temporary emails | Email verification |~</code> Removed feature
 | `TLS Client` | Rate limit detection | API monitoring |
 | `Random Generation` | Fake user data | Realistic accounts |
 
