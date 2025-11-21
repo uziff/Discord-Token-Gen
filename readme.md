@@ -26,7 +26,7 @@
 A **Selenium-based Discord Token Generator** that automates account creation using temporary emails and saves extracted tokens automatically.
 Simple, automated, and built for testing and learning.
 
-> ⚠️ This project is for **educational purposes only**.
+> ⚠️ This project is for **educational purposes only**
 > CAPTCHA and email verification must be done manually.
 
 ---
