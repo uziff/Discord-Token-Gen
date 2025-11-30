@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from colorama import Fore, Style, init
 from fake_useragent import UserAgent
 from pystyle import *
@@ -134,19 +135,36 @@ def main():
             username = generate_random_string()
             driver.find_element(By.NAME, "username").send_keys(username)
             driver.find_element(By.NAME, "password").send_keys(email)
-            element_3 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'react-select-3-input')))
-            element_3.send_keys('1')
-            time.sleep(1) # added timer to assure syncronization
-            element_3.send_keys(Keys.RETURN)
-            element_2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'react-select-2-input')))
-            element_2.send_keys('1')
-            time.sleep(1) # added timer to assure syncronization
-            element_2.send_keys(Keys.RETURN)
-            element_4 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'react-select-4-input')))
-            element_4.send_keys('1995')
-            time.sleep(1) # added timer to assure syncronization
-            element_2.send_keys(Keys.RETURN)
-
+            
+            print(f"{timestamp()} {Fore.YELLOW}Trying to set the date..{Style.RESET_ALL}")
+            actions = ActionChains(driver)
+            actions.send_keys(Keys.TAB) # Move from password
+            actions.pause(0.5)
+            actions.send_keys("January")
+            actions.send_keys(Keys.ENTER)
+            actions.perform()
+            #input("Press Enter when ready...")
+            for i in range(2):
+                actions.pause(0.2)
+                #ActionChains(driver).move_to_element(driver.find_element(By.NAME, "Day")).perform()
+                actions.send_keys(Keys.TAB) # Move from password
+                actions.pause(0.5)
+                
+                actions.send_keys("20") # so i know whats going on
+                actions.send_keys(Keys.ENTER)
+                actions.perform()
+                # actions.send_keys(Keys.ENTER) # test
+                #actions.pause(0.2)
+                #actions.perform()
+                #input("Press Enter when ready...")
+            for i in range(2):
+                actions.pause(0.2)
+                actions.send_keys(Keys.TAB)
+                actions.pause(0.5)
+                actions.send_keys("2000")
+                actions.send_keys(Keys.ENTER)
+                actions.perform()
+                #input("Press Enter when ready...")
              # yes discord we agree to the Terms of service
              
             try:
