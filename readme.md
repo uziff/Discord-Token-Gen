@@ -41,7 +41,7 @@ Love this project? Your support helps with new updates and tools ❤️
 
 ---
 
-## 📬 Contact the Creator
+## 📬 Contact the Creator:
 
 📩 **Discord:** `anomus.ly`
 
