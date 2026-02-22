@@ -1,4 +1,4 @@
-# ⚡ DISCORD TOKEN GENERATOR v1
+# ⚡ DISCORD TOKEN GENERATOR v1 (unmaintained) 
 
 ## 🚀 Setup
 
