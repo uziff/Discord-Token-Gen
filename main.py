@@ -18,6 +18,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 import tls_client
 import base64
+import pyautogui
 
 banner = f'''
 ██████╗ ██╗██╗   ██╗███████╗██████╗ 
@@ -101,6 +102,30 @@ def timestamp():
 def print_templog(temp_email):
     print(f"{timestamp()} {Fore.BLUE}Using tempmail{Style.RESET_ALL}: {Fore.GREEN}{temp_email}{Style.RESET_ALL}")
 
+def install_nopecha_from_store(driver):
+    print(f"{timestamp()} {Fore.YELLOW}Installing NopeCHA from Chrome Web Store...{Style.RESET_ALL}")
+    driver.get("https://chromewebstore.google.com/detail/nopecha-captcha-solver/dknlfmjaanfblgfdfebhijalfmhmjjjo")
+    time.sleep(3)
+    # Click "Add to Chrome" button
+    add_button = WebDriverWait(driver, 15).until(
+        EC.element_to_be_clickable((By.XPATH, '//button[contains(., "Add to Chrome") or contains(., "Aggiungi a Chrome") or contains(., "Aggiungi")]'))
+    )
+    add_button.click()
+    # The confirmation popup is a native Chrome dialog – press Tab then Enter to confirm "Add extension"
+    time.sleep(2)
+    pyautogui.press('tab')
+    time.sleep(0.3)
+    pyautogui.press('enter')
+    time.sleep(3)
+    # Close any extra tabs opened by the extension
+    if len(driver.window_handles) > 1:
+        main_handle = driver.window_handles[0]
+        for handle in driver.window_handles[1:]:
+            driver.switch_to.window(handle)
+            driver.close()
+        driver.switch_to.window(main_handle)
+    print(f"{timestamp()} {Fore.GREEN}NopeCHA extension installed!{Style.RESET_ALL}")
+
 def generate_yopmail_email():
     username = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
     email = f"{username}@gmail.com" # replaced whatever that was with gmail cuz that shi aint working 
@@ -126,8 +151,9 @@ def main():
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--ignore-certificate-errors")
-            driver = uc.Chrome(options=options)
+            driver = uc.Chrome(options=options, version_main=146)
             driver.maximize_window()
+            install_nopecha_from_store(driver)
             driver.get("https://discord.com/register")
             WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, "email")))
             driver.find_element(By.NAME, "email").send_keys(email)
@@ -180,7 +206,7 @@ def main():
                     if not checkbox.is_selected():
                         driver.execute_script("arguments[0].scrollIntoView(true);", checkbox)
                         time.sleep(0.5)
-                        checkbox.click()
+                        driver.execute_script("arguments[0].click();", checkbox)
                         
                 print(f"{timestamp()} {Fore.BLUE}Alright done.")
 
@@ -194,7 +220,7 @@ def main():
                     print(f'{timestamp()}{Fore.RED}[INFO] Ratelimited for {limit} seconds. Retrying after ratelimit disappears.')
                     time.sleep(limit)
                 continue_button.click()
-                print(f"{timestamp()} {Fore.BLUE}Please Solve Captcha Manually.{Style.RESET_ALL}")
+                print(f"{timestamp()} {Fore.BLUE}Waiting for NopeCHA to solve captcha...{Style.RESET_ALL}")
                 
                 # while True: nah
                 WebDriverWait(driver, 300).until(EC.url_contains("discord.com/channels/@me"))
@@ -216,7 +242,7 @@ def main():
                         break
                                                 """
                 driver.quit()
-                print(f"{timestamp()} {Fore.BLUE}Please Solve Captcha Manually.{Style.RESET_ALL}")
+                print(f"{timestamp()} {Fore.BLUE}Waiting for NopeCHA to solve captcha...{Style.RESET_ALL}")
                 success = login_and_fetch_token(email, email)
                 if success:
                     print(f"{timestamp()} {Fore.GREEN}Process complete. Restarting...{Style.RESET_ALL}")
