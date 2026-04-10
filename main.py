@@ -19,6 +19,8 @@ from selenium.webdriver.common.proxy import Proxy, ProxyType
 import tls_client
 import base64
 import pyautogui
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 banner = f'''
 ██████╗ ██╗██╗   ██╗███████╗██████╗ 
