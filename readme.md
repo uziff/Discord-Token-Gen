@@ -7,20 +7,16 @@
    git clone [https://github.com/uziff/Discord-Token-Gen.git](https://github.com/uziff/Discord-Token-Gen.git)
    cd Discord-Token-Gen
 
-```
-
 2. **Install Requirements:**
-```bash
-pip install -r requirements.txt
-
-```
+   ```
+   pip install -r requirements.txt
+   ```
 
 
 3. **Run the tool:**
-```bash
-python main.py
-
-```
+   ```
+   python main.py
+   ```
 
 
 ## ⚙️ How It Works
