@@ -63,7 +63,7 @@ A **Selenium-based Discord Token Generator** that automates account creation usi
 
 Looking for something unique? DM us on Discord with your idea and budget!
 
-* 💬 **Discord**: [`uzif`](https://dsc.gg/uzif)
+* 💬 **Discord**: [`uzif`](https://dsc.gg/uzif)<br>
 *If this tool saved you time or helped you out, enjoy! It's completely free. **As it should.***
 
 ---
