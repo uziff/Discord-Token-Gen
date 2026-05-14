@@ -4,7 +4,7 @@
 ## 🚀 Setup
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/uziff/Discord-Token-Gen.git](https://github.com/uziff/Discord-Token-Gen.git)
+   git clone https://github.com/uziff/Discord-Token-Gen.git
    cd Discord-Token-Gen
 
 2. **Install Requirements:**
