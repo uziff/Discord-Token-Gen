@@ -153,7 +153,7 @@ def main():
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--ignore-certificate-errors")
-            driver = uc.Chrome(options=options, version_main=146)
+            driver = uc.Chrome(options=options, version_main=148)
             driver.maximize_window()
             install_nopecha_from_store(driver)
             driver.get("https://discord.com/register")
