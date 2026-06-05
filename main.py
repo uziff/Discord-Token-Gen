@@ -137,6 +137,53 @@ def generate_random_string(length=12):
     characters = string.ascii_letters + string.digits
     return ''.join(random.choice(characters) for i in range(length))
 
+def fill_date_of_birth(driver, month, day, year):
+    from selenium.webdriver.support.ui import Select as SeleniumSelect
+
+    month_names = ["January","February","March","April","May","June",
+                   "July","August","September","October","November","December"]
+
+    # Strategy 1: native <select> elements
+    try:
+        selects = WebDriverWait(driver, 5).until(
+            EC.presence_of_all_elements_located((By.TAG_NAME, "select"))
+        )
+        if len(selects) >= 3:
+            SeleniumSelect(selects[0]).select_by_visible_text(month_names[month - 1])
+            time.sleep(0.3)
+            SeleniumSelect(selects[1]).select_by_visible_text(str(day))
+            time.sleep(0.3)
+            SeleniumSelect(selects[2]).select_by_visible_text(str(year))
+            time.sleep(0.3)
+            print(f"{timestamp()} {Fore.GREEN}Date set.{Style.RESET_ALL}")
+            return
+    except Exception:
+        pass
+
+    # Strategy 2: React Select / custom dropdowns (role="combobox")
+    def click_and_pick(field_index, value_text):
+        containers = driver.find_elements(By.XPATH, '//*[@role="combobox"]')
+        ActionChains(driver).move_to_element(containers[field_index]).click().perform()
+        time.sleep(0.4)
+        # Type to filter the option list
+        ActionChains(driver).send_keys(value_text).perform()
+        time.sleep(0.4)
+        opt = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH,
+                f'//*[@role="option"][normalize-space(.)="{value_text}"]'))
+        )
+        driver.execute_script("arguments[0].scrollIntoView(true);", opt)
+        driver.execute_script("arguments[0].click();", opt)
+        time.sleep(0.3)
+
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.XPATH, '//*[@role="combobox"]'))
+    )
+    click_and_pick(0, month_names[month - 1])
+    click_and_pick(1, str(day))
+    click_and_pick(2, str(year))
+    print(f"{timestamp()} {Fore.GREEN}Date set.{Style.RESET_ALL}")
+
 def main():
     print(Colorate.Vertical(Colors.purple_to_blue, Center.XCenter(banner)))
     while True:
@@ -153,7 +200,9 @@ def main():
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--ignore-certificate-errors")
-            driver = uc.Chrome(options=options, version_main=146)
+            options.add_argument("--lang=en-US")
+            options.add_experimental_option("prefs", {"intl.accept_languages": "en-US,en"})
+            driver = uc.Chrome(options=options, version_main=148)
             driver.maximize_window()
             install_nopecha_from_store(driver)
             driver.get("https://discord.com/register")
@@ -165,35 +214,8 @@ def main():
             driver.find_element(By.NAME, "password").send_keys(email)
             
             print(f"{timestamp()} {Fore.YELLOW}Trying to set the date..{Style.RESET_ALL}")
-            actions = ActionChains(driver)
-            actions.send_keys(Keys.TAB) # Move from password
-            actions.pause(0.5)
-            actions.send_keys("January")
-            actions.send_keys(Keys.ENTER)
-            actions.perform()
-            #input("Press Enter when ready...")
-            for i in range(2):
-                actions.pause(0.2)
-                #ActionChains(driver).move_to_element(driver.find_element(By.NAME, "Day")).perform()
-                actions.send_keys(Keys.TAB) # Move from password
-                actions.pause(0.5)
-                
-                actions.send_keys("20") # so i know whats going on
-                actions.send_keys(Keys.ENTER)
-                actions.perform()
-                # actions.send_keys(Keys.ENTER) # test
-                #actions.pause(0.2)
-                #actions.perform()
-                #input("Press Enter when ready...")
-            for i in range(2):
-                actions.pause(0.2)
-                actions.send_keys(Keys.TAB)
-                actions.pause(0.5)
-                actions.send_keys("2000")
-                actions.send_keys(Keys.ENTER)
-                actions.perform()
-                #input("Press Enter when ready...")
-             # yes discord we agree to the Terms of service
+            fill_date_of_birth(driver, 9, 20, 2000)
+            # yes discord we agree to the Terms of service
              
             try:
                 locator = (By.XPATH, "//input[@type='checkbox']")
