@@ -202,7 +202,7 @@ def main():
             options.add_argument("--ignore-certificate-errors")
             options.add_argument("--lang=en-US")
             options.add_experimental_option("prefs", {"intl.accept_languages": "en-US,en"})
-            driver = uc.Chrome(options=options, version_main=148)
+            driver = uc.Chrome(options=options, version_main=150)
             driver.maximize_window()
             install_nopecha_from_store(driver)
             driver.get("https://discord.com/register")
