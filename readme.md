@@ -1,5 +1,5 @@
 
-# ⚡ DISCORD TOKEN GENERATOR v1.8
+# ⚡ DISCORD TOKEN GENERATOR v1.9
 
 ## 🚀 Setup
 1. **Clone the repository:**
@@ -33,6 +33,10 @@
 * `evs.txt` - Complete account data (`email:password:token`)
 
 ---
+
+## 🌐 Proxies support
+
+To add your own proxies, just follow the simple instructions in [proxy help.txt](https://github.com/uziff/Discord-Token-Gen/blob/main/proxy%20help.txt)
 
 ## 🎯 About
 
