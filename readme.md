@@ -38,6 +38,8 @@
 
 To add your own proxies, just follow the simple instructions in [proxy help.txt](https://github.com/uziff/Discord-Token-Gen/blob/main/proxy%20help.txt)
 
+---
+
 ## 🎯 About
 
 A **Selenium-based Discord Token Generator** that automates account creation using temporary emails and saves extracted tokens automatically. Simple, automated, and built for testing and learning.
