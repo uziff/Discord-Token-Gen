@@ -1,0 +1,1 @@
+(() => {var e=chrome,t=function(){document.documentElement.setAttribute("installed","yes"),document.documentElement.setAttribute("data",JSON.stringify({version:e.runtime.getManifest().version}))};if("loading"!==document.readyState)return setTimeout(t,0);{let e=()=>{removeEventListener("DOMContentLoaded",e),t()};addEventListener("DOMContentLoaded",e)}})()

@@ -104,7 +104,7 @@ def timestamp():
 def print_templog(temp_email):
     print(f"{timestamp()} {Fore.BLUE}Using tempmail{Style.RESET_ALL}: {Fore.GREEN}{temp_email}{Style.RESET_ALL}")
 
-def install_nopecha_from_store(driver):
+def install_nopecha(driver):
     print(f"{timestamp()} {Fore.YELLOW}Installing NopeCHA from Chrome Web Store...{Style.RESET_ALL}")
     driver.get("https://chromewebstore.google.com/detail/nopecha-captcha-solver/dknlfmjaanfblgfdfebhijalfmhmjjjo")
     time.sleep(3)
@@ -202,9 +202,18 @@ def main():
             options.add_argument("--ignore-certificate-errors")
             options.add_argument("--lang=en-US")
             options.add_experimental_option("prefs", {"intl.accept_languages": "en-US,en"})
-            driver = uc.Chrome(options=options, version_main=150)
+
+            #curdir = os.path.dirname(os.path.abspath(__file__))
+            #ext_path = os.path.join(curdir, "DKNLFMJAANFBLGFDFEBHIJALFMHMJJJO_0_6_1_0")
+            #options.add_argument(f"--load-extension={ext_path}")
+
+            # fuck you google ur not fun :(
+
+            driver = uc.Chrome(options=options)
             driver.maximize_window()
-            install_nopecha_from_store(driver)
+            
+            install_nopecha(driver)
+            
             driver.get("https://discord.com/register")
             WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, "email")))
             driver.find_element(By.NAME, "email").send_keys(email)

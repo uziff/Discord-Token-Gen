@@ -1,0 +1,9 @@
+Format PROTOCOL://username:password@IP:PORT
+
+Example:
+http://user:passw!@192.168.0.1:8080
+
+Add your proxies to proxies.txt
+
+Then, run "python pyproxy.py run main.py" 
+OR (but this will install the proxies for every python executable you run) "python pyproxy.py install proxies.txt" and then run main.py
