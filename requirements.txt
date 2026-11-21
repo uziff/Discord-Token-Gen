@@ -6,3 +6,4 @@ pystyle
 requests
 tls-client
 pyautogui
+setuptools
