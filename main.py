@@ -11,7 +11,7 @@ import requests
 import time
 import random
 import string
-import re
+import re, subprocess
 import os
 from datetime import datetime
 from selenium.common.exceptions import TimeoutException
@@ -23,21 +23,25 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 banner = f'''
-██████╗ ██╗██╗   ██╗███████╗██████╗ 
-██╔══██╗██║██║   ██║██╔════╝██╔══██╗
-██████╔╝██║██║   ██║█████╗  ██████╔╝
-██╔══██╗██║╚██╗ ██╔╝██╔══╝  ██╔══██╗
-██║  ██║██║ ╚████╔╝ ███████╗██║  ██║
-╚═╝  ╚═╝╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝                                                     
-🚀 Ultimate EVS Tool 🚀
-[+] Programmed By Anomus.LY
-[+] Modified By Uzif
+                     
+                     
+████▄  ██████ ▄████  
+██  ██   ██  ██  ▄▄▄ 
+████▀    ██   ▀███▀  
+                                                               
+[+] By Uzif
 [+] https://haxs.dev/
 
 '''
 
 
-
+def chrome_v():
+    out = subprocess.run(
+        r'reg query "HKEY_CURRENT_USER\Software\Google\Chrome\BLBeacon" /v version',
+        capture_output=True, text=True, shell=True
+    ).stdout
+    m = re.search(r"(\d+)\.", out)
+    return int(m.group(1)) if m else None
 
 def account_ratelimit():
     """Fetches rate limit using account creation data."""
@@ -92,7 +96,7 @@ def account_ratelimit():
 
 init(autoreset=True)
 os.system("cls")
-os.system("title Ultimate EV GEN V1 By Anomus.LY_")
+os.system("title Discord Account Generator - The Good one.")
 def random_sleep(base=2, variation=3):
     time.sleep(base + random.uniform(0, variation))
 
@@ -209,7 +213,7 @@ def main():
 
             # fuck you google ur not fun :(
 
-            driver = uc.Chrome(options=options)
+            driver = uc.Chrome(options=options, version_main=chrome_v())
             driver.maximize_window()
             
             install_nopecha(driver)
