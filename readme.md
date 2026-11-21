@@ -1,5 +1,5 @@
 
-# ⚡ DISCORD TOKEN GENERATOR v1.9
+# ⚡ DISCORD TOKEN GENERATOR v1.9.1
 
 ## 🚀 Setup
 1. **Clone the repository:**
